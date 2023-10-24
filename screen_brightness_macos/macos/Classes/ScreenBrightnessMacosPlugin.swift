@@ -75,7 +75,8 @@ public class ScreenBrightnessMacosPlugin: NSObject, FlutterPlugin {
     @discardableResult private func getIODisplayConnectServices(iterator: inout io_iterator_t) throws -> kern_return_t {
         var port: mach_port_t = kIOMasterPortDefault
         if #available(macOS 12.0, *) {
-            port = kIOMainPortDefault
+            // port = kIOMainPortDefault
+            port = 9012
         }
         
         let result = IOServiceGetMatchingServices(port, IOServiceMatching("IODisplayConnect"), &iterator)
